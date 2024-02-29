@@ -3,7 +3,6 @@
 import { Session } from 'next-auth'
 import { useEffect, useState } from 'react'
 import { signOutFunc } from '../lib/signOutFunc'
-import styles from './style.module.css'
 
 export const User = () => {
   // App Router では useSession は必要無いかもと公式ドキュメントに書かれているが…？
@@ -30,19 +29,14 @@ export const User = () => {
 
   return (
     <div>
-      {session ? (
-        <form action={signOutFunc}>
-          <button type='submit' className={styles.button}>
-            ログアウト
-          </button>
-        </form>
-      ) : (
-        <form action='/login'>
-          <button type='submit' className={styles.button}>
-            ログイン
-          </button>
-        </form>
-      )}
+      <form action={session ? signOutFunc : '/login'}>
+        <button
+          type='submit'
+          style={{ background: '#ccc', color: '#000', padding: '4px 8px' }}
+        >
+          {session ? 'ログアウト' : 'ログイン'}
+        </button>
+      </form>
     </div>
   )
 }

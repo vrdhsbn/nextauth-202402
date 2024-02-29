@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { User } from './User'
-import styles from './style.module.css'
 
 export const Header = () => {
   return (
@@ -42,7 +41,7 @@ export const Header = () => {
             <Link href='/dashboard'>ダッシュボード</Link>
           </li>
         </ul>
-        <div className={styles.buttonArea}>
+        <div style={{ width: '120px' }}>
           <User />
         </div>
       </div>
